@@ -29,7 +29,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
 
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " +  botmg()});
+            sendMessage(event.sender.id, {text: "Echo: " + botmsg});
         }
     }
     res.sendStatus(200);
@@ -53,13 +53,4 @@ function sendMessage(recipientId, message) {
     });
 };
 
-function botmg(){
 
-	request('ftp://ftp.com.univ-mrs.fr/pub/cygwin/cygwin/usr/share/vim/vim61/doc/filetype.txt', function (error, response, body) {
-  
-    var botmsgs =body; // Show the HTML for the Google homepage.
-  
-
-});
-	return botmsgs;
-}

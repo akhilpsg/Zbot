@@ -26,6 +26,9 @@ app.post('/webhook', function (req, res) {
           request("https://api.motion.ai/getConversations?key=6c6cd54cb566928ac1623c0331855f9e&direction=in", function(error, response, body) {
 
           	var botmessage=body;
+          	console.log("dddd");
+          	console.log("botmessage");
+
 });
     for (i = 0; i < events.length; i++) {
         var event = events[i];

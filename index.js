@@ -24,6 +24,11 @@ app.get('/webhook', function (req, res) {
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     var botmsg ="variable value";
+    request('http://www.google.com', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var botmsg =body; // Show the HTML for the Google homepage.
+  }
+})
     for (i = 0; i < events.length; i++) {
         var event = events[i];
 

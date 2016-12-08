@@ -23,10 +23,15 @@ app.get('/webhook', function (req, res) {
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
+          request("https://api.motion.ai/getConversations?key=6c6cd54cb566928ac1623c0331855f9e&direction=in", function(error, response, body) {
+
+          	var botmessage=body;
+});
     for (i = 0; i < events.length; i++) {
         var event = events[i];
+
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "I am at your Service"});
+            sendMessage(event.sender.id, {text: "Echo: " + botmessage});
         }
     }
     res.sendStatus(200);

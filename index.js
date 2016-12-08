@@ -26,7 +26,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, "I am at your service");
+            sendMessage(event.sender.id, {text: "I am at your Service"});
         }
     }
     res.sendStatus(200);

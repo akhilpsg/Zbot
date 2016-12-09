@@ -28,7 +28,7 @@ app.get('/mydat', function(req, res, next) {
       api_key: '123456',
       query: 'World of Warcraft: Legion'
     }
-  }),unction(error, response, body) {
+  }),function(error, response, body) {
 
   	console.log(response.body)
   }

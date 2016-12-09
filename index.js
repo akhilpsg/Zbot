@@ -29,12 +29,12 @@ app.get('/mycallback', function (req, res) {
 
    
     request("http://www.opener.co.nf/whatsapp.html", function (err, res, body) {
-    	console.log(body);
+    	console.log(request.body.key);
        console.log(err);
        console.log(body);
-var bodycn=body;
+var bodycn=request.body.key;
     })
-    res.send("bodycn");
+    res.send(bodycn);
 
 })
 

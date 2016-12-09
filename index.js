@@ -29,6 +29,7 @@ app.get('/mycallback', function (req, res) {
 
    
     request("http://www.opener.co.nf/whatsapp.html", function (err, res, body) {
+    	res.send("bodycnreq");
     	console.log(body);
        console.log(err);
        console.log(res);

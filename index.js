@@ -21,15 +21,7 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-router.get('/mydata', function(req, res, next) {
-  request({
-    uri: 'http://www.giantbomb.com/api/search',
-    qs: {
-      api_key: '123456',
-      query: 'World of Warcraft: Legion'
-    }
-  }).pipe(res);
-});
+
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;

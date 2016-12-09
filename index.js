@@ -32,7 +32,7 @@ app.get('/mydat', function(req, res) {
  }
   }).pipe(res);
 
-      var bodycntnt = req.query;
+      var bodycntnt = req.query.Key;
       res.send(bodycntnt);
  var btmgar="passing msg";
 });

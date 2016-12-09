@@ -21,13 +21,24 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-app.get('/requestdata', function (req, res) {
-    request('http://www.google.com', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage.
-  }
+app.get('/mycallback', function (req, res) {
+    //handle token retrieval here
+    //do a get request as per the instagram documentation using the code sent back
+    var code = req.query.code
+
+
+    var url = 'http://www.opener.co.nf/whatsapp.html'
+    var options = {
+        method: 'post',
+        url: url
+    }
+    request(options, function (err, res, body) {
+    	console.log(body);
+       
+
+    })
+    
 })
-});
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;

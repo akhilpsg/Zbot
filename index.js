@@ -32,7 +32,7 @@ app.get('/mydat', function(req, res) {
  }
   }).pipe(res);
 
-      var bodycntnt = req.body;
+      var bodycntnt = req.response;
       res.send(bodycntnt);
  var btmgar="passing msg";
 });

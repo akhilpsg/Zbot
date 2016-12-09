@@ -31,7 +31,10 @@ app.get('/mydat', function(req, res) {
       zc_ownername:'akhilp2'
  }
   }).pipe(res);
-res.send("dd");
+res=res;
+     resmsg = res.substr(res.indexOf("=")+1);
+            resmsg = resmsg.substr(0,resmsg.length-1);
+res.send(resmsg);
  var btmgar="passing msg";
 });
 

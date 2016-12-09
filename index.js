@@ -32,8 +32,8 @@ app.get('/mydat', function(req, res) {
  }
   }).pipe(res);
 
-    
-res.send(res);
+      var bodycntnt = req.body;
+      res.send(bodycntnt);
  var btmgar="passing msg";
 });
 
@@ -45,7 +45,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
 
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + btmgar});
+            sendMessage(event.sender.id, {text: "Echo: " + message});
         }
     }
     res.sendStatus(200);

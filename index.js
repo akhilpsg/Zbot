@@ -24,7 +24,7 @@ app.get('/webhook', function (req, res) {
 
 app.get('/mydat', function(req, res) {
   request({
-    uri: 'https://creator.zoho.com/api/json/vendor/view/Item_View',
+    uri: 'https://zcreatorslackbot.herokuapp.com/jokes.php',
     qs: {
       scope: 'creatorapi',
       authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
@@ -32,7 +32,7 @@ app.get('/mydat', function(req, res) {
  }
   }).pipe(res);
 
-      var bodycntnt = req;
+      var bodycntnt = req.body;
       res.send(bodycntnt);
  var btmgar="passing msg";
 });

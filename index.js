@@ -21,7 +21,7 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-router.get('/', function(req, res, next) {
+app.get('/mydat', function(req, res, next) {
   request({
     uri: 'http://www.giantbomb.com/api/search',
     qs: {

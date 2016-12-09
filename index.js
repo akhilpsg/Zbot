@@ -29,11 +29,9 @@ app.get('/mydat', function(req, res) {
       scope: 'creatorapi',
       authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
       zc_ownername:'akhilp2'
- }, function(error, response, body) {
-       console.log("vvh");
-        }
+ }
   }).pipe(res);
-
+res.send("dd");
  var btmgar="passing msg";
 });
 

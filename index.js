@@ -37,7 +37,7 @@ app.get('/mycallback', function (req, res) {
        
 var bodycn=body;
     })
-    res.send(bodycn);
+    res.send("bodycn");
 
 })
 

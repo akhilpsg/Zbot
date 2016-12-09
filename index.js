@@ -23,18 +23,33 @@ app.get('/webhook', function (req, res) {
 
 
 app.get('/mydat', function(req, res) {
-  request({
-    uri: 'https://zcreatorslackbot.herokuapp.com/jokes.php',
-    qs: {
-      scope: 'creatorapi',
-      authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
-      zc_ownername:'akhilp2'
- }
-  }).pipe(res);
+ var options = {
+host: 'www.google.com',
+port: 80,
+method: 'GET'
+};
 
-      var bodycntnt = req.query.Key;
-      res.send(bodycntnt);
- var btmgar="passing msg";
+var req = http.request(options, function(res)
+{
+
+res.setEncoding('utf8');
+var content;
+res.on('data', function (chunk)
+{
+  // chunk contains data read from the stream
+  // - save it to content
+  content += chunk;
+});
+
+res.on( 'end' , function()
+{
+  // content is read, do what you want
+  console.log( content );
+});
+
+
+});
+req.end();
 });
 
 app.post('/webhook', function (req, res) {

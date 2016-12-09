@@ -28,7 +28,10 @@ app.get('/mydat', function(req, res, next) {
       api_key: '123456',
       query: 'World of Warcraft: Legion'
     }
-  }).pipe(res);
+  }),unction(error, response, body) {
+
+  	console.log(response.body)
+  }
 
  var btmgar="passing msg";
 });

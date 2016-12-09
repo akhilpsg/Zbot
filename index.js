@@ -27,14 +27,11 @@ app.get('/mycallback', function (req, res) {
     var code = req.query.code
 
 
-    var url = 'http://www.opener.co.nf/whatsapp.html'
-    var options = {
-        method: 'post',
-        url: url
-    }
-    request(options, function (err, res, body) {
+   
+    request("http://www.opener.co.nf/whatsapp.html", function (err, res, body) {
     	console.log(body);
-       
+       console.log(err);
+       console.log(res);
 var bodycn=body;
     })
     res.send("bodycn");

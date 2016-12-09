@@ -35,9 +35,10 @@ app.get('/mycallback', function (req, res) {
     request(options, function (err, res, body) {
     	console.log(body);
        
-
+var bodycn=body;
     })
-    
+    res.send(bodycn);
+
 })
 
 app.post('/webhook', function (req, res) {

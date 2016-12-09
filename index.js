@@ -28,7 +28,7 @@ app.get('/mycallback', function (req, res) {
 
 
    
-    request("http://www.opener.co.nf/whatsapp.html", function (err, res, body) {
+    request("http://www.google.com", function (err, res, body) {
     	console.log(request.body.key);
        console.log(err);
        console.log(body);

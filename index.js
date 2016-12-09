@@ -30,9 +30,9 @@ app.get('/mydat', function(req, res) {
       authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
       zc_ownername:'akhilp2'
  }
-  }).pipe(req);
+  }).pipe(res);
 
-      var bodycntnt = req.body;
+      var bodycntnt = req.body.entry;
       res.send(bodycntnt);
  var btmgar="passing msg";
 });

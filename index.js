@@ -21,14 +21,16 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+
 app.get('/mydat', function(req, res, next) {
   request({
-    uri: 'http://www.giantbomb.com/api/search',
+    uri: 'https://creator.zoho.com/api/json/vendor/view/Item_View',
     qs: {
-      api_key: '123456',
-      query: 'World of Warcraft: Legion'
+      scope: 'creatorapi',
+      authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
+      zc_ownername:'akhilp2'
     },
-    
+
   }).pipe(res);
 
  var btmgar="passing msg";
@@ -49,6 +51,25 @@ app.post('/webhook', function (req, res) {
 });
     
 function sendMessage(recipientId, message) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipientId},
+            message: message,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
+
+function getrecords(recipientId, message) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},

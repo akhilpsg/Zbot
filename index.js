@@ -29,6 +29,8 @@ app.get('/mydat', function(req, res, next) {
       query: 'World of Warcraft: Legion'
     }
   }).pipe(res);
+
+ var btmgar="passing msg";
 });
 
 app.post('/webhook', function (req, res) {
@@ -39,7 +41,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
 
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + botmsg});
+            sendMessage(event.sender.id, {text: "Echo: " + btmgar});
         }
     }
     res.sendStatus(200);

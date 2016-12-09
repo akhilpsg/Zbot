@@ -21,22 +21,15 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-app.get('/mycallback', function (req, res) {
-    //handle token retrieval here
-    //do a get request as per the instagram documentation using the code sent back
-    var code = req.query.code
-
-
-   
-    request("http://www.google.com", function (err, res, body) {
-    	console.log(request.body.key);
-       console.log(err);
-       console.log(body);
-var bodycn=request.body.key;
-    })
-    res.send(bodycn);
-
-})
+router.get('/mydata', function(req, res, next) {
+  request({
+    uri: 'http://www.giantbomb.com/api/search',
+    qs: {
+      api_key: '123456',
+      query: 'World of Warcraft: Legion'
+    }
+  }).pipe(res);
+});
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;

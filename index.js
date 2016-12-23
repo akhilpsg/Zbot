@@ -23,33 +23,16 @@ app.get('/webhook', function (req, res) {
 
 
 app.get('/mydat', function(req, res) {
- var options = {
-host: 'www.google.com',
-port: 80,
-method: 'GET'
-};
+  request({
+    uri: 'https://creator.zoho.com/api/json/vendor/view/Item_View',
+    qs: {
+      scope: 'creatorapi',
+      authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
+      zc_ownername:'akhilp2'
+ }
+  }).pipe(res);
 
-var req = http.request(options, function(res)
-{
-
-res.setEncoding('utf8');
-var content;
-res.on('data', function (chunk)
-{
-  // chunk contains data read from the stream
-  // - save it to content
-  content += chunk;
-});
-
-res.on( 'end' , function()
-{
-  // content is read, do what you want
-  console.log( content );
-});
-
-
-});
-req.end();
+ var btmgar="passing msg";
 });
 
 app.post('/webhook', function (req, res) {
@@ -85,22 +68,6 @@ function sendMessage(recipientId, message) {
 };
 
 
-function getrecords(recipientId, message) {
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: {
-            recipient: {id: recipientId},
-            message: message,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
-        }
-    });
-};
+
 
 

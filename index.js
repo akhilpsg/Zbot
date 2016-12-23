@@ -22,18 +22,7 @@ app.get('/webhook', function (req, res) {
 });
 
 
-app.get('/mydat', function(req, res) {
-  request({
-    uri: 'https://creator.zoho.com/api/json/vendor/view/Item_View',
-    qs: {
-      scope: 'creatorapi',
-      authtoken: 'dba9eaaf1528a1c77885e321fa85e44e',
-      zc_ownername:'akhilp2'
- }
-  }).pipe(res);
 
- var btmgar="passing msg";
-});
 
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;

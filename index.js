@@ -40,13 +40,14 @@ app.post('/webhook', function (req, res) {
 function sendMessage(recipientId, message) {
     console.log("Sending Message");
 
-    request({
-
-            url:'http://www.google.com',
+    request({url:'http://www.google.com',
             method:'POST'
              }, function (error, response, body) {
             var messagetx = error+response+body;
             });
+    console.log("Sent Message");
+        console.log(messagetx);
+
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',

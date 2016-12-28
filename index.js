@@ -29,22 +29,14 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            request({
-        url: 'http://www.opener.co.nf',
-        method: 'POST', 
-    }, function(error, response, body){
-        if (error) {
-            sendMessage(event.sender.id, {text: "Echo: " + error + response + body});
-        } else if (response.body.error) {
-            sendMessage(event.sender.id, {text: "Echo: " + error + response + body});
-        }
-    });
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
     }
     res.sendStatus(200);
 });
     
 function sendMessage(recipientId, message) {
+    console.log("Sending Message");
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},

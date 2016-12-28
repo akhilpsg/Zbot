@@ -30,8 +30,8 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
                 console.log("Sending Request to Google");
-
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+                    var test ="www.google.com";
+            sendMessage(event.sender.id, {text: "You Said: " + event.message.text + "We Said: " + test});
         }
     }
     res.sendStatus(200);

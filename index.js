@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
                 console.log("Sending Request to Google");
-                    var test ="www.google.com";
+                   
             sendMessage(event.sender.id, {text: "You Said: " + event.message.text + " We Said: " + test});
         }
     }
@@ -39,44 +39,22 @@ app.post('/webhook', function (req, res) {
     
 function sendMessage(recipientId, message) {
     console.log("Sending Message");
-    let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
-            }
-        }
-    }
+
+    request({
+
+            url:'http://www.google.com',
+            method:'POST'
+             }, function (error, response, body) {
+            var messagetx = error+response+body;
+            });
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
             recipient: {id: recipientId},
-            message: messageData,
+            message: messagetx,
         }
     }, function(error, response, body){
         if (error) {

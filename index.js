@@ -30,11 +30,6 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
                 console.log("Sending Request to Google");
-request('http://www.google.com', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage.
-  }
-})                console.log(" Requested to Google");
 
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }

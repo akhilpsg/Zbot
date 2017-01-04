@@ -22,6 +22,8 @@ app.get('/webhook', function (req, res) {
                     console.log(' message: ', error + body + response );
                     var cnr = error + body + response;
 
+                    console.log(cnr);
+
         
     });
     if (req.query['hub.verify_token'] === 'testbot_verify_token') {

@@ -22,7 +22,7 @@ app.get('/webhook', function (req, res) {
 });
 
 app.get('/chuck', function (req, res) {
-   request('http://www.google.com', function (error, response, body) {
+   request('http://api.icndb.com/jokes/random', function (error, response, body) {
   if (!error && response.statusCode == 200) {
     res.send(body) // Show the HTML for the Google homepage.
   }

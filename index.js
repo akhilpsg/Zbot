@@ -26,7 +26,8 @@ app.get('/chuck', function (req, res) {
    request('http://api.icndb.com/jokes/random', 
         function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                     res.send(response.type) // Show the HTML for the Google homepage.
+                    re = JSON.parse(body);
+                     res.send(re.type) // Show the HTML for the Google homepage.
                 }
         })
     });

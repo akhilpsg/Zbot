@@ -29,8 +29,7 @@ app.get('/webhook', function (req, res) {
                     console.log(cnr);
 
         
-    });
-        res.send('Invalid verify token' +cnr +";");
+    }),res.send('Invalid verify token' +cnr +";");
     }
 });
 

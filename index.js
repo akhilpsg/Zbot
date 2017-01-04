@@ -22,14 +22,7 @@ app.get('/webhook', function (req, res) {
 });
 
 app.get('/chuck', function (req, res) {
-    request({
-        url: 'https://api.chucknorris.io/jokes/random',
-        method: 'GET'
-    }, function(error, response, body){
-                    console.log(' message: ', error + body + response );
-                            res.send(' message: ', error + body + response + ';');
-        
-    });
+    res.send("HI Chuck")
 });
 
 

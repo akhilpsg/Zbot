@@ -33,9 +33,9 @@ app.get('/chuck', function (req, res) {
     }*/
 }, function(error, response, body){
     if(error) {
-       res.send(body);
+       res.send(error + body + response);
     } else {
-        res.send(body);
+        res.send(response.type);
     }
 });
    request('http://api.icndb.com/jokes/random', function (error, response, body) {

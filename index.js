@@ -33,16 +33,12 @@ app.get('/chuck', function (req, res) {
     }*/
 }, function(error, response, body){
     if(error) {
-       res.send(error + body + response);
+      res.send(response.type);
     } else {
         res.send(response.type);
     }
 });
-   request('http://api.icndb.com/jokes/random', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    res.send(body) // Show the HTML for the Google homepage.
-  }
-})
+  
 });
 
 

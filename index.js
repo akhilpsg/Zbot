@@ -14,26 +14,23 @@ app.get('/', function (req, res) {
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
-
-   
     if (req.query['hub.verify_token'] === 'testbot_verify_token') {
         res.send(req.query['hub.challenge']);
     } else {
-          request({
+        res.send('Invalid verify token');
+    }
+});
+
+app.get('/chuck', function (req, res) {
+    request({
         url: 'https://api.chucknorris.io/jokes/random',
         method: 'GET'
     }, function(error, response, body){
                     console.log(' message: ', error + body + response );
-                    var cnr = "Arun";
-
-                    console.log(cnr);
-
+                            res.send(' message: ', error + body + response + ';');
         
-    }),res.send('Invalid verify token' +cnr +";");
-    }
+    });
 });
-
-
 
 
 app.post('/webhook', function (req, res) {

@@ -29,33 +29,20 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-                console.log("Sending Request to Google");
-                   
-            sendMessage(event.sender.id, {text: "You Said: " + event.message.text + " We Said: " + test});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
     }
     res.sendStatus(200);
 });
     
 function sendMessage(recipientId, message) {
-    console.log("Sending Message");
-
-    request({url:'http://www.google.com',
-            method:'POST'
-             }, function (error, response, body) {
-            var messagetx = error+response+body;
-            });
-    console.log("Sent Message");
-        console.log(messagetx);
-
-
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
             recipient: {id: recipientId},
-            message: messagetx,
+            message: message,
         }
     }, function(error, response, body){
         if (error) {

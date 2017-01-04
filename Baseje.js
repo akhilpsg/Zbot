@@ -19,17 +19,21 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
+    console.log(' messageget: ');
+    alert('alertmsgget');
 });
 
 
 
 
 app.post('/webhook', function (req, res) {
+    console.log(' message: ');
+    alert('alertmsg');
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"message: " + });
         }
     }
     res.sendStatus(200);

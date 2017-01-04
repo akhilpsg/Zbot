@@ -14,21 +14,20 @@ app.get('/', function (req, res) {
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
+    
     if (req.query['hub.verify_token'] === 'testbot_verify_token') {
         res.send(req.query['hub.challenge']);
     } else {
         res.send('Invalid verify token');
     }
-    console.log(' messageget: ');
-    alert('alertmsgget');
+   
 });
 
 
 
 
 app.post('/webhook', function (req, res) {
-    console.log(' message: ');
-    alert('alertmsg');
+    
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];

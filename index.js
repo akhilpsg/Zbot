@@ -23,23 +23,13 @@ app.get('/webhook', function (req, res) {
 
 app.get('/chuck', function (req, res) {
 
-    request({
-    url: 'http://api.icndb.com/jokes/random', //URL to hit
-    //qs: {from: 'blog example', time: +new Date()}, //Query string data
-    method: 'GET' //Specify the method
-    /*headers: { //We can define headers too
-        'Content-Type': 'MyContentType',
-        'Custom-Header': 'Custom Value'
-    }*/
-}, function(error, response, body){
-    if(error) {
-      res.send(response.type);
-    } else {
-        res.send(response.type);
-    }
-});
-  
-});
+   request('http://api.icndb.com/jokes/random', 
+        function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                     res.send(body) // Show the HTML for the Google homepage.
+                }
+        })
+    });
 
 
 app.post('/webhook', function (req, res) {

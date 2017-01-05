@@ -58,7 +58,7 @@ var options = {
   
 };
 function callback(error, response, body) {
-  console.log(body + error + error);
+  console.log(body.value.joke);
 }
  
   console.log("requeste initiated");

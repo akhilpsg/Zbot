@@ -19,6 +19,21 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
+
+var options12 = {
+  url: 'http://api.icndb.com/jokes/random'
+  
+};
+function callback12(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                    var cnjoke12 = re.value.joke; // Show the HTML for the Google homepage.
+                }
+  }
+}
+request(options12, callback12);
+    
 });
 
 app.get('/chuck', function (req, res) {
@@ -50,25 +65,13 @@ request(options, callback);
 
 
 app.post('/webhook', function (req, res) {
-var options12 = {
-  url: 'http://api.icndb.com/jokes/random'
-  
-};
-function callback12(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    if (!error && response.statusCode == 200) {
-                    re = JSON.parse(body);
-                    var cnjoke12 = re.value.joke; // Show the HTML for the Google homepage.
-                }
-  }
-}
-request(options12, callback12);
+
 var cnjoke123 ="new var";
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke123});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke12});
         }
     }
     res.sendStatus(200);

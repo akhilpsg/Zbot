@@ -57,15 +57,14 @@ var options = {
   url: 'http://api.icndb.com/jokes/random'
   
 };
-function callback(error, response, body) {
-  
+function callback(error, response, data) {
+  console.log("requested");
 }
  
-    var reqrespon = request(options, callback);
-    var reqrespo = JSON.stringify(reqrespon);
-    console.log(reqrespo + reqrespon)
-var cnjoke123 ="new var";
-    var cnjoke123 ="new var";
+  console.log("requeste initiated");
+    request(options, callback);
+
+console.log("requeste extended");
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];

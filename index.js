@@ -33,7 +33,7 @@ function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
     if (!error && response.statusCode == 200) {
                     re = JSON.parse(body);
-                     res.send(re.type) // Show the HTML for the Google homepage.
+                     res.send(re.value.joke) // Show the HTML for the Google homepage.
                 }
   }
 }

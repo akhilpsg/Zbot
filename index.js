@@ -58,7 +58,8 @@ var options = {
   
 };
 function callback(error, response, body) {
-  console.log(body.type);
+  re = JSON.parse(body);
+                     cosole.log(re.value.joke);
 }
  
   console.log("requeste initiated");

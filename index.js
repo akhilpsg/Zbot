@@ -57,8 +57,8 @@ var options = {
   url: 'http://api.icndb.com/jokes/random'
   
 };
-function callback(error, response, data) {
-  console.log("requested");
+function callback(error, response, body) {
+  console.log(body + error + error);
 }
  
   console.log("requeste initiated");

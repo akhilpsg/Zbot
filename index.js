@@ -58,17 +58,10 @@ var options = {
   
 };
 function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    if (!error && response.statusCode == 200) {
-                    re = JSON.parse(body);
-                     res.send(re.value.joke) // Show the HTML for the Google homepage.
-                }
-  }
+  
 }
  
-request(options, callback);
     var reqrespo = request(options, callback);
-    console.log("resp : " + reqrespo);
 var cnjoke123 ="new var";
     var cnjoke123 ="new var";
     var events = req.body.entry[0].messaging;

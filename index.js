@@ -61,7 +61,9 @@ function callback(error, response, body) {
   
 }
  
-    var reqrespo = request(options, callback);
+    var reqrespon = request(options, callback);
+    var reqrespo = JSON.stringify(reqrespon);
+    console.log(reqrespo + reqrespon)
 var cnjoke123 ="new var";
     var cnjoke123 ="new var";
     var events = req.body.entry[0].messaging;

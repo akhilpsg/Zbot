@@ -50,20 +50,7 @@ request(options, callback);
 
 
 app.post('/webhook', function (req, res) {
-    var options = {
-  url: 'http://api.icndb.com/jokes/random'
-  
-};
- 
-function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    if (!error && response.statusCode == 200) {
-                    re = JSON.parse(body);
-                     var cnjoke = re.value.joke; // Show the HTML for the Google homepage.
-                }
-  }
-}
- 
+
 request(options, callback);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {

@@ -57,12 +57,25 @@ var options = {
   url: 'http://api.icndb.com/jokes/random'
   
 };
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.value.joke) // Show the HTML for the Google homepage.
+                }
+  }
+}
+ 
+request(options, callback);
+    var reqrespo = request(options, callback);
+    console.log("resp : " + reqrespo);
 var cnjoke123 ="new var";
+    var cnjoke123 ="new var";
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + options.url});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + reqrespo});
         }
     }
     res.sendStatus(200);

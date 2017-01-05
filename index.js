@@ -23,13 +23,29 @@ app.get('/webhook', function (req, res) {
 
 app.get('/chuck', function (req, res) {
 
-   request('http://api.icndb.com/jokes/random', 
+ 
+var options = {
+  url: 'http://api.icndb.com/jokes/random'
+  
+};
+ 
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.type) // Show the HTML for the Google homepage.
+                }
+  }
+}
+ 
+request(options, callback);
+   /*request('http://api.icndb.com/jokes/random', 
         function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     re = JSON.parse(body);
                      res.send(re.type) // Show the HTML for the Google homepage.
                 }
-        })
+        })*/
     });
 
 

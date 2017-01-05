@@ -58,7 +58,7 @@ function callback12(error, response, body) {
   if (!error && response.statusCode == 200) {
     if (!error && response.statusCode == 200) {
                     re = JSON.parse(body);
-                    cnjoke = re.value.joke; // Show the HTML for the Google homepage.
+                    var cnjoke12 = re.value.joke; // Show the HTML for the Google homepage.
                 }
   }
 }
@@ -67,7 +67,7 @@ request(options12, callback12);
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke12});
         }
     }
     res.sendStatus(200);

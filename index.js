@@ -58,7 +58,7 @@ var options = {
   
 };
 function callback(error, response, body) {
-  console.log(body.value.joke);
+  console.log(body);
 }
  
   console.log("requeste initiated");
@@ -69,7 +69,7 @@ console.log("requeste extended");
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + reqrespo});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " });
         }
     }
     res.sendStatus(200);

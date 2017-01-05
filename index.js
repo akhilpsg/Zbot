@@ -21,7 +21,7 @@ app.get('/webhook', function (req, res) {
     }
 
 
-    
+
 });
 
 app.get('/chuck', function (req, res) {
@@ -53,13 +53,16 @@ request(options, callback);
 
 
 app.post('/webhook', function (req, res) {
-
+var options = {
+  url: 'http://api.icndb.com/jokes/random'
+  
+};
 var cnjoke123 ="new var";
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke123});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + options.url});
         }
     }
     res.sendStatus(200);

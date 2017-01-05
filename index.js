@@ -20,19 +20,7 @@ app.get('/webhook', function (req, res) {
         res.send('Invalid verify token');
     }
 
-var options12 = {
-  url: 'http://api.icndb.com/jokes/random'
-  
-};
-function callback12(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    if (!error && response.statusCode == 200) {
-                    re = JSON.parse(body);
-                    var cnjoke12 = re.value.joke; // Show the HTML for the Google homepage.
-                }
-  }
-}
-request(options12, callback12);
+
     
 });
 
@@ -71,7 +59,7 @@ var cnjoke123 ="new var";
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke12});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + cnjoke123});
         }
     }
     res.sendStatus(200);

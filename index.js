@@ -75,7 +75,7 @@ var cnjoke123 ="new var";
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + reqrespo.value.joke});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + reqrespo});
         }
     }
     res.sendStatus(200);

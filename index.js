@@ -62,10 +62,20 @@ var cnjoke123 ="new var";
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
           ratearr=[];
+          itemnamearr=[];
+          productcodearr=[];
           for(i=0;i<creatorvals.Item.length;i++){
             var allitems= creatorvals.Item[i];
             for(var key in allitems){
+                if(key == "Product_Code"){
+                    productcodearr.push(allitems[key]);
+                }
+                  if(key == "Item_Name"){
+                    itemnamearr.push(allitems[key]);
+                }
+                  if(key == "Rate"){
                     ratearr.push(allitems[key]);
+                }
 
             }
           }

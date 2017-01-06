@@ -79,8 +79,11 @@ var cnjoke123 ="new var";
 
             }
           }
-          
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + ratearr });
+          var prpos = productcodearr.indexOf(event.message.text);
+           var botmsg = "Cannot find the product. Please check the product again."
+          if(prpos!=-1){ botmsg = ratearr[prpos];}
+         
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + botmsg });
         }
     }
     res.sendStatus(200);

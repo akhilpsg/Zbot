@@ -57,7 +57,7 @@ app.post('/webhook', function (req, res) {
 var cnjoke123 ="new var";
 var creatorvals = getCreator();
 console.log(creatorvals);
-var Result = JSON.parse(creatorvals);
+Result = JSON.parse(creatorvals);
 console.log(Result);
 
 

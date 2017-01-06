@@ -61,8 +61,16 @@ var cnjoke123 ="new var";
         var event = events[i];
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
-          var resultmsg = creatorvals.Item[0].Rate;
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + resultmsg });
+          ratearr=[];
+          for(i=0;i<creatorvals.Item.length;i++){
+            var allitems= creatorvals.Item[i];
+            for(var key in obj){
+                    ratearr.push(obj[key]);
+
+            }
+          }
+          
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + ratearr });
         }
     }
     res.sendStatus(200);

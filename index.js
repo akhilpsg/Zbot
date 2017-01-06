@@ -57,10 +57,10 @@ app.post('/webhook', function (req, res) {
 var cnjoke123 ="new var";
 var creatorvals = getCreator();
 console.log(creatorvals);
-Result = JSON.parse(creatorvals);
+var Result = JSON.parse(creatorvals);
 console.log(Result);
 
-Resultrate = creatorvals.Item[0].Rate;
+var Resultrate = Result.Item[0].Rate;
 console.log(creatorvals + Result + Resultrate);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
@@ -96,8 +96,8 @@ function getCreator(prcode) {
     request({
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true'
     }, function(error, response, body){
-       re = body;
-        resjoke =re;
+       var re = body;
+        var resjoke =re;
     });
     return resjoke;
 };

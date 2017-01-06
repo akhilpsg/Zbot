@@ -59,11 +59,36 @@ var cnjoke123 ="new var";
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-
+ productcode =[];
+            itemname=[];
+            rate=[];
             var creatorvals = getCreator();
-console.log(creatorvals);
                     creatorvals= JSON.parse(creatorvals);
-            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals });
+                       var Items = re.Item;
+                       for (i = 0; i < Items.length; i++) {
+
+                var obj = Items[i];
+                for (var key in obj) {
+                    vals = obj[key];
+                    if (key == "Product_Code") {
+
+                        productcode.push(obj[key]);
+                    }
+                    if (key == "Item_Name") {
+
+
+                        itemname.push(obj[key]);
+                    }
+                    if (key == "Rate") {
+
+                        rate.push(obj[key]);
+                    }
+
+                }
+            }
+                    console.log(creatorvals);
+
+            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + Rate[0] });
         }
     }
     res.sendStatus(200);

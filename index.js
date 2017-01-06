@@ -56,8 +56,9 @@ app.post('/webhook', function (req, res) {
 
 var cnjoke123 ="new var";
 var creatorvals = getCreator();
-Result = JSON.stringify(creatorvals);
-console.log(creatorvals);
+Result = JSON.parse(creatorvals);
+Resultrate = creatorvals.Item[0].Rate;
+console.log(creatorvals + Result + Resultrate);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];

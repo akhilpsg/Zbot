@@ -80,7 +80,7 @@ var cnjoke123 ="new var";
             }
           }
           var prpos = productcodearr.indexOf(event.message.text);
-           var botmsg = "Cannot find the product. Please check the product again. "
+           var botmsg = "Cannot find the product. Please check the product code again. "
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;

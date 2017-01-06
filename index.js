@@ -58,7 +58,7 @@ var cnjoke123 ="new var";
 var creatorvals = getCreator();
 console.log(creatorvals);
 Result = JSON.parse(creatorvals);
-console.log(Result)
+console.log(Result);
 
 Resultrate = creatorvals.Item[0].Rate;
 console.log(creatorvals + Result + Resultrate);

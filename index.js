@@ -56,6 +56,7 @@ app.post('/webhook', function (req, res) {
 
 var cnjoke123 ="new var";
 var creatorvals = getCreator();
+console.log(creatorvals);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -88,10 +89,10 @@ function sendMessage(recipientId, message) {
 
 function getCreator() {
     request({
-        url: 'http://api.icndb.com/jokes/random',
+        url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2',
     }, function(error, response, body){
        re = JSON.parse(body);
-        resjoke =re.value.joke;
+        resjoke =re;
     });
     return resjoke;
 };

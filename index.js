@@ -61,6 +61,25 @@ var cnjoke123 ="new var";
         var event = events[i];
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
+          var productcode =[];
+          var rate =[];
+          var itemname=[];
+          vat allitem = creatorvals.Item;
+          for(i=0;i<creatorvals.Item.length;i++){
+            obj = allitem[i];
+            for(key in obj){
+                if (key ="Product_Code"){
+                    productcode.push(key[obj]);
+                }
+                if (key ="Item_Name"){
+                    itemname.push(key[obj]);
+                }
+                if (key ="Rate"){
+                    rate.push(key[obj]);
+                }
+            }
+
+          }
           var resultmsg = creatorvals.Item[0].Rate;
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + resultmsg });
         }

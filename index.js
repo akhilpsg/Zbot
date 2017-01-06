@@ -24,26 +24,48 @@ app.get('/webhook', function (req, res) {
 
 });
 
-    
+app.get('/chuck', function (req, res) {
+
+ 
+var options = {
+  url: 'http://api.icndb.com/jokes/random'
+  
+};
+ 
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.value.joke) // Show the HTML for the Google homepage.
+                }
+  }
+}
+ 
+request(options, callback);
+   /*request('http://api.icndb.com/jokes/random', 
+        function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.type) // Show the HTML for the Google homepage.
+                }
+        })*/
+    });
+
 
 app.post('/webhook', function (req, res) {
 
-
-
+var cnjoke123 ="new var";
+var creatorvals = getCreator();
+console.log(creatorvals);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            var creatorvals = getCreator(event.message.text);
-console.log(creatorvals);
-            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals + "." });
+            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals });
         }
     }
     res.sendStatus(200);
 });
-
-
-
     
 function sendMessage(recipientId, message) {
     request({
@@ -65,48 +87,13 @@ function sendMessage(recipientId, message) {
 
 
 
-function getCreator(prcode) {
-     var productcode =[];
-            var itemname=[];
-            var rate=[];
+function getCreator() {
     request({
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true'
     }, function(error, response, body){
-       re = JSON.parse(body);
-      
-        var Items = re.Item;
-
-            for (i = 0; i < Items.length; i++) {
-
-                var obj = Items[i];
-                for (var key in obj) {
-                    vals = obj[key];
-                    if (key == "Product_Code") {
-
-                        productcode.push(obj[key]);
-                    }
-                    if (key == "Item_Name") {
-
-
-                        itemname.push(obj[key]);
-                    }
-                    if (key == "Rate") {
-
-                        rate.push(obj[key]);
-                    }
-
-                }
-            }
-            var prpos = productcode.indexof(prcode);
-var prrate ="Cannot find the product. please check the product again";
-if (prpos != -1)
-{
-prrate = rate[prpos];
-}
+       re = JSON.stringify(body);
+        resjoke =re;
     });
-
-
-
-    return prrate;
+    return resjoke;
 };
 

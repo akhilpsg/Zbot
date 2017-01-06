@@ -29,12 +29,13 @@ app.get('/webhook', function (req, res) {
 app.post('/webhook', function (req, res) {
 
 
-var creatorvals = getCreator();
-console.log(creatorvals);
+
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
+            var creatorvals = getCreator(event.message.text);
+console.log(creatorvals);
             sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals + "." });
         }
     }
@@ -69,10 +70,10 @@ function getCreator(prcode) {
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true'
     }, function(error, response, body){
        re = JSON.parse(body);
-       productcode =[];
-            itemname=[];
-            rate=[];
-        Items = re.Item;
+       var productcode =[];
+            var itemname=[];
+            var rate=[];
+        var Items = re.Item;
 
             for (i = 0; i < Items.length; i++) {
 
@@ -97,8 +98,8 @@ function getCreator(prcode) {
             }
     });
 
-prpos = productcode.indexof(prcode);
-prrate ="Cannot find the product. please check the product again";
+var prpos = productcode.indexof(prcode);
+var prrate ="Cannot find the product. please check the product again";
 if (prpos != -1)
 {
 prrate = rate[prpos];

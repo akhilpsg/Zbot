@@ -80,13 +80,13 @@ var cnjoke123 ="new var";
             }
           }
           var prpos = productcodearr.indexOf(event.message.text);
-           var botmsg = "Cannot find the product. Please check the product again."
+           var botmsg = " Cannot find the product. Please check the product again. "
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
-                botmsg =" Product Name: "+itemname+" Rate: "+rate;
+                botmsg =" Product Name: "+itemname+"\n Rate: "+rate;
           }
          
-            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + botmsg });
+            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg });
         }
     }
     res.sendStatus(200);

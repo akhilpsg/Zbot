@@ -61,7 +61,7 @@ console.log(creatorvals);
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + creatorvals });
+            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals + "." });
         }
     }
     res.sendStatus(200);
@@ -91,8 +91,8 @@ function getCreator() {
     request({
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true'
     }, function(error, response, body){
-       re = JSON.stringify(body);
-        resjoke =re;
+       re = JSON.parse(body);
+        resjoke =re.Item[0].Product_Code;
     });
     return resjoke;
 };

@@ -60,8 +60,7 @@ console.log(creatorvals);
 var Result = JSON.parse(creatorvals);
 console.log(Result);
 
-var Resultrate = Result.Item[1].Rate;
-console.log(creatorvals + Result + Resultrate);
+
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];

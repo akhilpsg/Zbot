@@ -64,8 +64,8 @@ var cnjoke123 ="new var";
           ratearr=[];
           for(i=0;i<creatorvals.Item.length;i++){
             var allitems= creatorvals.Item[i];
-            for(var key in obj){
-                    ratearr.push(obj[key]);
+            for(var key in allitems){
+                    ratearr.push(allitems[key]);
 
             }
           }

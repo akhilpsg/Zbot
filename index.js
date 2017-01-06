@@ -56,14 +56,13 @@ app.post('/webhook', function (req, res) {
 
 var cnjoke123 ="new var";
 var creatorvals = getCreator();
-Result = JSON.parse(creatorvals);
-Result = creatorvals.Item[0].Rate;
+Result = JSON.stringify(creatorvals);
 console.log(creatorvals);
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: "  });
+            sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " +Result });
         }
     }
     res.sendStatus(200);

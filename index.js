@@ -60,7 +60,7 @@ var cnjoke123 ="new var";
         var event = events[i];
         if (event.message && event.message.text) {
 
-            var creatorvals = getCreator(event.message.text);
+            var creatorvals = getCreator();
 console.log(creatorvals);
 
             sendMessage(event.sender.id, {text: "You Asked Price for : " + event.message.text +". Current Price is $: " + creatorvals });
@@ -93,9 +93,9 @@ function getCreator(prcode) {
     request({
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true'
     }, function(error, response, body){
-       re = JSON.stringify(body);
+       re = JSON.parse(body);
         resjoke =re;
     });
-    return prcode;
+    return re;
 };
 

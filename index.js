@@ -81,9 +81,12 @@ var cnjoke123 ="new var";
           }
           var prpos = productcodearr.indexOf(event.message.text);
            var botmsg = "Cannot find the product. Please check the product again."
-          if(prpos!=-1){ botmsg = ratearr[prpos];}
+          if(prpos!=-1){ rate = ratearr[prpos]; 
+                itemname=itemnamearr[prpos];
+                botmsg =" Product Name: "+itemname+" Rate: "+rate;
+          }
          
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + botmsg });
+            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + botmsg });
         }
     }
     res.sendStatus(200);

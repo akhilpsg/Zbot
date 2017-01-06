@@ -16,21 +16,51 @@ app.get('/', function (req, res) {
 app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === 'testbot_verify_token') {
         res.send(req.query['hub.challenge']);
-         console.log(req.query['hub.challenge']);
     } else {
         res.send('Invalid verify token');
-        console.log('Invalid verify token');
     }
+
+
+
 });
 
+app.get('/chuck', function (req, res) {
+
+ 
+var options = {
+  url: 'http://api.icndb.com/jokes/random'
+  
+};
+ 
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.value.joke) // Show the HTML for the Google homepage.
+                }
+  }
+}
+ 
+request(options, callback);
+   /*request('http://api.icndb.com/jokes/random', 
+        function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    re = JSON.parse(body);
+                     res.send(re.type) // Show the HTML for the Google homepage.
+                }
+        })*/
+    });
 
 
 app.post('/webhook', function (req, res) {
+
+var cnjoke123 ="new var";
+var creatorvals = getCreator();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + creatorvals });
         }
     }
     res.sendStatus(200);
@@ -56,4 +86,13 @@ function sendMessage(recipientId, message) {
 
 
 
+function getCreator() {
+    request({
+        url: 'http://api.icndb.com/jokes/random',
+    }, function(error, response, body){
+       re = JSON.parse(body);
+        resjoke =re.value.joke;
+    });
+    return resjoke;
+};
 

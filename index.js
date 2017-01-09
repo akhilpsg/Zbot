@@ -20,7 +20,7 @@ app.get('/webhook', function (req, res) {
         res.send('Invalid verify token');
     }
 
-            sendMessage("1136970429751020", {text: "Product Code: " + event.message.text + "\n" + botmsg });
+            sendMessage("1136970429751020", {text: "Product Code: " });
 
 
 });

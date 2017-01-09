@@ -54,7 +54,7 @@ request(options, callback);
 
 app.post('/webhook', function (req, res) {
 
-var cnjoke123 ="new var";
+
 
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
@@ -80,13 +80,14 @@ var cnjoke123 ="new var";
             }
           }
           var prpos = productcodearr.indexOf(event.message.text);
-           var botmsg = "Cannot find the product. Please check the product code again. "
+          var itempos = itemnamearr.indexOf(event.message.text);
+           var botmsg = "Cannot find the product. Please check the product code again."
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;
           }
          
-            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg });
+            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID" + event.sender.id});
         }
     }
     res.sendStatus(200);

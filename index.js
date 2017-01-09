@@ -87,7 +87,7 @@ app.post('/webhook', function (req, res) {
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;
           }
          
-            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID" + event.sender.id});
+            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID : " + event.sender.id});
         }
     }
     res.sendStatus(200);

@@ -87,14 +87,14 @@ app.post('/webhook', function (req, res) {
            var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
-                                botmsg ="<b>Product Code:</b> " + event.message.text + "\nProduct Name: "+itemname+"\nRate: "+rate;
+                                botmsg ="Product Code: " + event.message.text + "\nProduct Name: "+itemname+"\nRate: "+rate;
 
                             sendMessage(event.sender.id, {text: botmsg});
 
           }
-           else if(itempos!=-1){ rate = ratearr[prpos]; 
-                productcode=productcodearr[prpos];
-                botmsg ="<b>Product Name:</b> " + event.message.text + "\nProduct code: "+productcode+"\nRate: "+rate;
+           else if(itempos!=-1){ rate = ratearr[itempos]; 
+                productcode=productcodearr[itempos];
+                botmsg ="Product Name:" + event.message.text + "\nProduct code: "+productcode+"\nRate: "+rate;
                             sendMessage(event.sender.id, {text: botmsg});
 
           }

@@ -56,11 +56,9 @@ request(options, callback);
 app.post('/webhook', function (req, res) {
 
 
-var alldatareqres = req.body;
-var alldatareqresstring = JSON.stringify(alldatareqres);
-console.log(alldatareqres);
+
+
     var events = req.body.entry[0].messaging;
-    console.log(events);
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
@@ -93,6 +91,12 @@ console.log(alldatareqres);
          
             sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID : " + event.sender.id});
         }
+        else if (event.postback && event.postback.payload) {
+      payload = event.postback.payload;
+      // Handle a payload from this sender
+                  sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + payload + "Sender ID : " + event.sender.id});
+
+    }
     }
 
     res.sendStatus(200);

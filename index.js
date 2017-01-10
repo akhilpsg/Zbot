@@ -20,7 +20,7 @@ app.get('/webhook', function (req, res) {
         res.send('Invalid verify token');
     }
 tmpmsg ='{"attachment": {"type": "template","payload": {"elements": [{"title": "Kitten", "subtitle": "Cute kitten picture","buttons":[{"type":"web_url","url": imageUrl, "title": "Show kitten"}, {"type": "postback","title": "I like this","payload": "User " + recipientId + " likes kitten" + imageUrl,}]}] }}};'
-            sendMessage("1136970429751020", {text: "Product Code: " + tmpmsg });
+            sendMessage("1136970429751020", tmpmsg });
 
 
 });

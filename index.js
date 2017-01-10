@@ -139,7 +139,6 @@ function sendMessage(recipientId, message) {
         }
     });
 };
-https://graph.facebook.com/v2.6/<USER_ID>?access_token=PAGE_ACCESS_TOKEN.
 
 
 function GetFBUser(recipientId) {
@@ -149,6 +148,7 @@ function GetFBUser(recipientId) {
         method: 'GET'
     }, function(error, response, body){
        fbuserresp = JSON.parse(body);
+fbuserresp = fbuserresp;
         
         if (error) {
             console.log('Error sending message: ', error);

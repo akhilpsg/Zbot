@@ -19,7 +19,8 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
-
+//tmpmsg ='{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+            //sendMessage("1136970429751020", tmpmsg);
 
 
 });
@@ -54,17 +55,67 @@ request(options, callback);
 
 app.post('/webhook', function (req, res) {
 
-var cnjoke123 ="new var";
+
+
 
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
-          var resultmsg = creatorvals.Item[0].Rate;
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + resultmsg });
+          ratearr=[];
+          itemnamearr=[];
+          productcodearr=[];
+          for(i=0;i<creatorvals.Item.length;i++){
+            var allitems= creatorvals.Item[i];
+            for(var key in allitems){
+                if(key == "Product_Code"){
+                    productcodearr.push(allitems[key]);
+                }
+                  if(key == "Item_Name"){
+                    itemnamearr.push(allitems[key]);
+                }
+                  if(key == "Rate"){
+                    ratearr.push(allitems[key]);
+                }
+
+            }
+          }
+          var prpos = productcodearr.indexOf(event.message.text);
+          var itempos = itemnamearr.indexOf(event.message.text);
+          var noresults = "Your search - ' " + event.message.text + "' - did not match any records. Please choose the appropriate option below.";
+           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+          if(prpos!=-1){ rate = ratearr[prpos]; 
+                itemname=itemnamearr[prpos];
+                                botmsg ="Product Code: " + event.message.text + "\nProduct Name: "+itemname+"\nRate: "+rate;
+
+                            sendMessage(event.sender.id, {text: botmsg});
+
+          }
+           else if(itempos!=-1){ rate = ratearr[itempos]; 
+                productcode=productcodearr[itempos];
+                botmsg ="Product Name:" + event.message.text + "\nProduct code: "+productcode+"\nRate: "+rate;
+                            sendMessage(event.sender.id, {text: botmsg});
+
+          }
+          else{
+                                      
+
+
+                            sendMessage(event.sender.id, botqus);
+
+
+          }
+         
         }
+        else if (event.postback && event.postback.payload) {
+      payload = event.postback.payload;
+      // Handle a payload from this sender
+                  sendMessage(event.sender.id, {text: payload});
+
     }
+    }
+
     res.sendStatus(200);
 });
     
@@ -98,4 +149,3 @@ function getCreator() {
     return resjoke;
 };
 
-            <script type="text/javascript">(function(){var d = document;if(d.querySelector('meta[name="zwaid"]')){var b=$("meta[name='zwaid']").attr("content");$("meta[name='zwaid']").attr("content",b+","+"233f13cc02a975f6ea46c90d0bf0a2e4d");b=$("meta[name='zwauid']").attr("content");$("meta[name='zwauid']").attr("content",b+","+"213c8e275485b53e56a73058460b2a736");b=$("meta[name='zwaod']").attr("content");$("meta[name='zwaod']").attr("content",b+","+"27a85e88391b3b87c1f5d272c11a622a06a73058460b2a736");b=$("meta[name='zwad']").attr("content");$("meta[name='zwad']").attr("content",b+","+"291ed4d32473c30d69388ac10acf59e900f27973bedc43d55");b=$("meta[name='zwv']").attr("content");$("meta[name='zwv']").attr("content",b+",0.0");}else{var w=window;var p = w.location.protocol;if(p.indexOf("http") < 0){p = "http"+":";}var f = d.getElementsByTagName('script')[0],s = d.createElement('script');s.type = 'text/javascript'; s.async = false; s.src =p+"//campaigns.localzoho.com/js/WebsiteAutomation.js";f.parentNode.insertBefore(s, f);var z=d.createElement('meta');z.setAttribute("content","233f13cc02a975f6ea46c90d0bf0a2e4d");z.setAttribute("name","zwaid");var y=d.createElement('meta');y.setAttribute("content","213c8e275485b53e56a73058460b2a736");y.setAttribute("name","zwauid");var x=d.createElement('meta');x.setAttribute("content","27a85e88391b3b87c1f5d272c11a622a06a73058460b2a736");x.setAttribute("name","zwaod");var w=d.createElement('meta');w.setAttribute("content","291ed4d32473c30d69388ac10acf59e900f27973bedc43d55");w.setAttribute("name","zwad");var v=d.createElement('meta');v.setAttribute("content","0.0");v.setAttribute("name","zwv");d.getElementsByTagName("head")[0].appendChild(z);d.getElementsByTagName("head")[0].appendChild(y);d.getElementsByTagName("head")[0].appendChild(x);d.getElementsByTagName("head")[0].appendChild(w);d.getElementsByTagName("head")[0].appendChild(v);}})()</script>    

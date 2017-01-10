@@ -148,15 +148,11 @@ function GetFBUser(recipientId) {
         method: 'GET'
     }, function(error, response, body){
        fbuserresp = JSON.parse(body);
-fbuserresp = fbuserresp;
+fbr = fbuserresp;
         
-        if (error) {
-            console.log('Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
-        }
+       
     });
-return fbuserresp;
+return fbr;
 
 };
 

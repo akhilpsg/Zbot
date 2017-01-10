@@ -19,8 +19,8 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
-tmpmsg ='{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
-            sendMessage("1136970429751020", tmpmsg);
+//tmpmsg ='{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+            //sendMessage("1136970429751020", tmpmsg);
 
 
 });
@@ -83,7 +83,7 @@ app.post('/webhook', function (req, res) {
           }
           var prpos = productcodearr.indexOf(event.message.text);
           var itempos = itemnamearr.indexOf(event.message.text);
-           var botmsg = "Cannot find the product. Please check the product code again."
+           var botmsg = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;

@@ -83,13 +83,21 @@ app.post('/webhook', function (req, res) {
           }
           var prpos = productcodearr.indexOf(event.message.text);
           var itempos = itemnamearr.indexOf(event.message.text);
-           var botmsg = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;
+                            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID : " + event.sender.id});
+
+          }
+          else{
+                                        sendMessage(event.sender.id, {text: "Your search - ' " + event.message.text +"'did not match any records. Please choose the appropriate option below."});
+
+                            sendMessage(event.sender.id, botqus);
+
+
           }
          
-            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID : " + event.sender.id});
         }
         else if (event.postback && event.postback.payload) {
       payload = event.postback.payload;

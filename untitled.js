@@ -19,8 +19,7 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
-tmpmsg ='{"attachment": {"type": "template","payload": {"elements": [{"title": "Kitten", "subtitle": "Cute kitten picture","buttons":[{"type":"web_url","url": imageUrl, "title": "Show kitten"}, {"type": "postback","title": "I like this","payload": "User " + recipientId + " likes kitten" + imageUrl,}]}] }}};'
-            sendMessage("1136970429751020", {text: "Product Code: " + tmpmsg });
+
 
 
 });
@@ -55,40 +54,34 @@ request(options, callback);
 
 app.post('/webhook', function (req, res) {
 
-
+var cnjoke123 ="new var";
 
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
-          ratearr=[];
-          itemnamearr=[];
-          productcodearr=[];
+          var productcode =[];
+          var rate =[];
+          var itemname=[];
+          vat allitem = creatorvals.Item;
           for(i=0;i<creatorvals.Item.length;i++){
-            var allitems= creatorvals.Item[i];
-            for(var key in allitems){
-                if(key == "Product_Code"){
-                    productcodearr.push(allitems[key]);
+            obj = allitem[i];
+            for(key in obj){
+                if (key ="Product_Code"){
+                    productcode.push(key[obj]);
                 }
-                  if(key == "Item_Name"){
-                    itemnamearr.push(allitems[key]);
+                if (key ="Item_Name"){
+                    itemname.push(key[obj]);
                 }
-                  if(key == "Rate"){
-                    ratearr.push(allitems[key]);
+                if (key ="Rate"){
+                    rate.push(key[obj]);
                 }
-
             }
+
           }
-          var prpos = productcodearr.indexOf(event.message.text);
-          var itempos = itemnamearr.indexOf(event.message.text);
-           var botmsg = "Cannot find the product. Please check the product code again."
-          if(prpos!=-1){ rate = ratearr[prpos]; 
-                itemname=itemnamearr[prpos];
-                botmsg ="Product Name: "+itemname+"\nRate: "+rate;
-          }
-         
-            sendMessage(event.sender.id, {text: "Product Code: " + event.message.text + "\n" + botmsg + "Sender ID : " + event.sender.id});
+          var resultmsg = creatorvals.Item[0].Rate;
+            sendMessage(event.sender.id, {text: "Echo: " + event.message.text +"Joke: " + resultmsg });
         }
     }
     res.sendStatus(200);

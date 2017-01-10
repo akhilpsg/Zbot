@@ -61,6 +61,9 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
+        var fbuserdata = GetFBUser(event.sender.id);
+        console.log(fbuserdata);
+
         if (event.message && event.message.text) {
           var creatorvals = getCreator();
           ratearr=[];
@@ -136,6 +139,26 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+https://graph.facebook.com/v2.6/<USER_ID>?access_token=PAGE_ACCESS_TOKEN.
+
+
+function GetFBUser(recipientId) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/'+recipientId,
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'GET'
+    }, function(error, response, body){
+       fbuserresp = JSON.parse(body);
+        
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+return fbuserresp;
+
+};
 
 
 
@@ -144,8 +167,8 @@ function getCreator() {
         url: 'https://creator.zoho.com/api/json/vendor/view/Item_View?scope=creatorapi&authtoken=dba9eaaf1528a1c77885e321fa85e44e&zc_ownername=akhilp2&raw=true',
     }, function(error, response, body){
        re = JSON.parse(body);
-        resjoke =re;
+        crresp =re;
     });
-    return resjoke;
+    return crresp;
 };
 

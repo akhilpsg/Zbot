@@ -94,7 +94,7 @@ app.post('/webhook', function (req, res) {
         else if (event.postback && event.postback.payload) {
       payload = event.postback.payload;
       // Handle a payload from this sender
-                  sendMessage(event.sender.id, {text: "Product Code: " + "\n" + payload + "Sender ID : " + event.sender.id});
+                  sendMessage(event.sender.id, {text: payload});
 
     }
     }

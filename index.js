@@ -19,7 +19,7 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
-tmpmsg ='{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "web_url", "url": "https://petersapparel.parseapp.com", "title": "Show Website" }, { "type": "postback", "title": "Start Chatting", "payload": "USER_DEFINED_PAYLOAD" }] } } }'
+tmpmsg ='{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "title": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
             sendMessage("1136970429751020", tmpmsg);
 
 

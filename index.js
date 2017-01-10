@@ -62,7 +62,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         var fbuserdata = GetFBUser(event.sender.id);
-        console.log(JSON.stringif(fbuserdata));
+        console.log(JSON.stringify(fbuserdata));
 
         if (event.message && event.message.text) {
           var creatorvals = getCreator();

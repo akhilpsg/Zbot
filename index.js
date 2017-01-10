@@ -91,7 +91,7 @@ app.post('/webhook', function (req, res) {
 
           }
           else{
-                                        sendMessage(event.sender.id, {text: "Your search - ' " + event.message.text +"'did not match any records. Please choose the appropriate option below."});
+                                        sendMessage(event.sender.id, {text: "Your search - ' " + event.message.text +"' - did not match any records. Please choose the appropriate option below.",botqus});
 
                             sendMessage(event.sender.id, botqus);
 

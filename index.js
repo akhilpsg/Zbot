@@ -83,7 +83,7 @@ app.post('/webhook', function (req, res) {
           }
           var prpos = productcodearr.indexOf(event.message.text);
           var itempos = itemnamearr.indexOf(event.message.text);
-           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "What do you want to do next?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+           var botqus = '{ "type": "template", "payload": { "template_type": "button", "text": "What information do you have?", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } '
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                 botmsg ="Product Name: "+itemname+"\nRate: "+rate;
@@ -91,7 +91,7 @@ app.post('/webhook', function (req, res) {
 
           }
           else{
-                                        sendMessage(event.sender.id, {text: "Your search - ' " + event.message.text +"' - did not match any records. Please choose the appropriate option below.",botqus});
+                                        sendMessage(event.sender.id, {text: "Your search - ' " + event.message.text +"' - did not match any records. Please choose the appropriate option below.", attachment:botqus});
 
                             sendMessage(event.sender.id, botqus);
 

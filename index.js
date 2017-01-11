@@ -103,13 +103,6 @@ var fbuserid = event.sender.id;
                             sendMessage(event.sender.id, {text: botmsg});
 
           }
-          else if (event.message.text == hi)
-          {
-                var noresults = event.message.text + fbuserfname +" "+fbuserlname+"!, Please choose the appropriate option below.";
-                var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
-               sendMessage(event.sender.id, botqus);
-
-          }
           else{
                                       
 

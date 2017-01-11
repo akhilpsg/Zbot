@@ -103,7 +103,7 @@ var fbuserid = event.sender.id;
                             sendMessage(event.sender.id, {text: botmsg});
 
           }
-          else if(event.message.text.toUpperCase()=='HI' || event.message.text.toUpperCase()=='Hello'){ 
+          else if(event.message.text.toUpperCase()=='HI' || event.message.text.toUpperCase()=='HELLO'){ 
                 botmsg ="Hi, I am Your Zbot";
                             sendMessage(event.sender.id, {text: botmsg});
 

@@ -104,7 +104,7 @@ var fbuserid = event.sender.id;
 
           }
           else if(event.message.text.toUpperCase()=='HI' || event.message.text.toUpperCase()=='HELLO'){ 
-                botmsg =fbuserfname +" "+fbuserlname+", "+"Your search - '" + event.message.text + "' - did not match any records. Please choose the appropriate option below.";
+                botmsg =event.message.text+fbuserfname +" "+fbuserlname+", "+"Your search - '" + event.message.text + "' - did not match any records. Please choose the appropriate option below.";
 
                       var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+botmsg+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }';
                             sendMessage(event.sender.id, botqus);

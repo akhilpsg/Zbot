@@ -104,9 +104,8 @@ var fbuserid = event.sender.id;
 
           }
           else if(event.message.text.toUpperCase()=='HI' || event.message.text.toUpperCase()=='HELLO'){ 
-               var noresults =event.message.text+ " "+fbuserfname "!, "+"I am Zbot and I am designed to serve your buiness needs. Please choose the appropriate option to boot your business operating system";
-           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }';
-                            sendMessage(event.sender.id, botqus);
+                botmsg ="Hi, I am Your Zbot";
+                            sendMessage(event.sender.id, {text: botmsg});
 
           }
           else{

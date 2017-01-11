@@ -89,7 +89,7 @@ var fbuserid = event.sender.id;
           var prpos = productcodearr.indexOf(event.message.text);
           var itempos = itemnamearr.indexOf(event.message.text);
           var noresults = fbuserfname +" "+fbuserlname+", "+"Your search - '" + event.message.text + "' - did not match any records. Please choose the appropriate option below.";
-           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }';
+           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                                 botmsg ="Product Code: " + event.message.text + "\nProduct Name: "+itemname+"\nRate: "+rate;
@@ -103,12 +103,12 @@ var fbuserid = event.sender.id;
                             sendMessage(event.sender.id, {text: botmsg});
 
           }
-          else if (event.message.text== 'hi' || event.message.text == 'hello')
+          else if (event.message.text == hi)
           {
+                var noresults = event.message.text + fbuserfname +" "+fbuserlname+"!, Please choose the appropriate option below.";
+                var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+               sendMessage(event.sender.id, botqus);
 
-                      var noresults = event.message.text +" "+fbuserfname+"! "+" I am your business bot. I am designed to serve your business.Please choose the appropriate option below to continue.";
-                       var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
-                   sendMessage(event.sender.id, {text: botmsg});
           }
           else{
                                       

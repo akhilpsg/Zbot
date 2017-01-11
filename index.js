@@ -103,6 +103,11 @@ var fbuserid = event.sender.id;
                             sendMessage(event.sender.id, {text: botmsg});
 
           }
+          else if(event.message.text=='hi'){ 
+                botmsg ="Hi, I am Your Zbot";
+                            sendMessage(event.sender.id, {text: botmsg});
+
+          }
           else{
                                       
 
@@ -150,7 +155,7 @@ function GetFBUser(recipientId) {
         method: 'GET'
     }, function(error, response, body){
        fbuserresp = JSON.parse(body);
-fbr = fbuserresp;
+        fbr = fbuserresp;
         
        
     });

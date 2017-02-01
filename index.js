@@ -127,7 +127,7 @@ var fbuserid = event.sender.id;
         else if (event.postback && event.postback.payload) {
       payload = event.postback.payload;
       // Handle a payload from this sender
-                  sendMessage(event.sender.id, {text: "This is Custom"});
+                  sendMessage(event.sender.id, {text: payload});
 
     }
     }

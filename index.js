@@ -89,7 +89,7 @@ var fbuserid = event.sender.id;
           var prpos = productcodearr.indexOf(event.message.text);
           var itempos = itemnamearr.indexOf(event.message.text);
           var noresults = fbuserfname +" "+fbuserlname+", "+"Your search - '" + event.message.text + "' - did not match any records. Please choose the appropriate option below.";
-           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
+           var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+noresults+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }'
           if(prpos!=-1){ rate = ratearr[prpos]; 
                 itemname=itemnamearr[prpos];
                                 botmsg ="Product Code: " + event.message.text + "\nProduct Name: "+itemname+"\nRate: "+rate;

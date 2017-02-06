@@ -108,7 +108,7 @@ var fbuserid = event.sender.id;
             var usrmsg =  event.message.text.charAt(0).toUpperCase() + event.message.text.substr(1).toLowerCase();
             console.log(usrmsg);
 
-                botmsg =usrmsg+" "+fbuserfname +"! "+"I am Zbot. I am designed to serve your business needs. Please choose the appropriate option below to boot your business operating system.";
+                botmsg =usrmsg+" "+fbuserfname +"! "+"I am Zbot. I am designed to serve your business needs. Please choose the appropriate option below.";
 
                       var botqus = '{"attachment": { "type": "template", "payload": { "template_type": "button", "text": "'+botmsg+'", "buttons": [{ "type": "postback", "title": "Product Name", "payload": "Enter Your Product Name" }, { "type": "postback", "title": "Product Code", "payload": "Enter Your Product Code" }] } } }';
                             sendMessage(event.sender.id, botqus);
